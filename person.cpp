@@ -47,4 +47,4 @@ float Person::totalPay()
 {return getPayRate() * getHoursWorked();}
 
 string Person::fullName()
-{return firstName + " " + lastName;}
+{return firstName + " " + lastName;
