@@ -5,7 +5,14 @@
 using namespace std;
 
 Person::Person()
-{ }
+{
+	firstName = "N/A";
+	lastName = "N/A";
+	employeeID = 0;
+	companyName = "N/A";
+	hoursWorked = 0.0;
+	payRate = 0.00;
+}
 
 void Person::setFirstName(string fName)
 {firstName = fName;}
