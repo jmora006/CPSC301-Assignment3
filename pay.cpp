@@ -35,16 +35,16 @@ void readData(vector<Person> &employees)
 
 void getCompanies(vector<Person> &employees, vector<string> &compNames)
 {
-  string tmp;
-  
-  for(int i = 0; i < employees.size(); i++)
-  {
-  	tmp = employees.at(i).getCompanyName();
-  	if(count(compNames.begin(), compNames.end(), tmp) == 0)
-  	{
-  		compNames.push_back(tmp);
-  	}
-  }
+	string tmp;
+	
+	for(int i = 0; i < employees.size(); i++)
+	{
+		tmp = employees.at(i).getCompanyName();
+		if(count(compNames.begin(), compNames.end(), tmp) == 0)
+		{
+			compNames.push_back(tmp);
+		}
+	}
 }
 
 void printHighestPaid(vector<Person> &employees)
@@ -75,46 +75,46 @@ void printHighestPaid(vector<Person> &employees)
 
 void separateAndSave(vector<Person> &employees, vector<string> &compNames)
 {
-  string comp, empComp, fName, lName, coName;
-  int id;
-  float empTotal, compTotal;
-  
-  for(int i = 0; i < compNames.size(); i++)
-  {
-  	compTotal = 0.0;
-  	comp = compNames.at(i);
-  	
-  	ofstream file(comp + ".txt");
-  	file.close();
-  	file<<"-------------"<<endl;
-  	
-  	for(int j = 0; j < employees.size(); j++)
-  	{
-  		ofstream file(comp + ".txt", ofstream::out | ofstream::app);
-  		empComp = employees.at(j).getCompanyName();
-  		
-  		if(comp == empComp)
-  		{
-  			if(file.is_open())
-  			{
-  				fName = employees.at(j).getFirstName();
-  				lName = employees.at(j).getLastName();
-  				id = employees.at(j).getEmployeeId();
-  				coName = employees.at(j).getCompanyName();
-  				empTotal = employees.at(j).getPayRate() * employees.at(j).getHoursWorked();
-  				
-  				file<<setprecision(2)<<fixed<<setw(10)<<left<<fName<<setw(7)<<left<<lName<<setw(4)<<right<<id<<" "<<setw(compNames[i].size())<<coName<<" $"<<empTotal<<endl;
-  				compTotal += empTotal;
-  			}
-  		}
-  		
-  		if(j == (employees.size() - 1))
-  		{
-  			file<<setprecision(2)<<fixed<<"Total $"<<compTotal<<endl;
-  		}
-  	}
-  	file.close();
-  }
+	string comp, empComp, fName, lName, coName;
+	int id;
+	float empTotal, compTotal;
+	
+	for(int i = 0; i < compNames.size(); i++)
+	{
+		compTotal = 0.0;
+		comp = compNames.at(i);
+		
+		ofstream file(comp + ".txt");
+		file.close();
+		file<<"-------------"<<endl;
+		
+		for(int j = 0; j < employees.size(); j++)
+		{
+			ofstream file(comp + ".txt", ofstream::out | ofstream::app);
+			empComp = employees.at(j).getCompanyName();
+			
+			if(comp == empComp)
+			{
+				if(file.is_open())
+				{
+					fName = employees.at(j).getFirstName();
+					lName = employees.at(j).getLastName();
+					id = employees.at(j).getEmployeeId();
+					coName = employees.at(j).getCompanyName();
+					empTotal = employees.at(j).getPayRate() * employees.at(j).getHoursWorked();
+					
+					file<<setprecision(2)<<fixed<<setw(10)<<left<<fName<<setw(7)<<left<<lName<<setw(4)<<right<<id<<" "<<setw(compNames[i].size())<<coName<<" $"<<empTotal<<endl;
+					compTotal += empTotal;
+				}
+			}
+			
+			if(j == (employees.size() - 1))
+			{
+				file<<setprecision(2)<<fixed<<"Total $"<<compTotal<<endl;
+			}
+		}
+		file.close();
+	}
 }
 
 int main()
